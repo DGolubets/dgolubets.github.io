@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://dgolubets.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/about/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/archive/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/k8s-managed-pool/</loc>
+        <lastmod>2024-07-14</lastmod>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/starting-blog/</loc>
+        <lastmod>2024-07-14</lastmod>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/tags/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/tags/general/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/tags/k8s/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/tags/rust/</loc>
+    </url>
+</urlset>
