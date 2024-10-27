@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="robots" content="noodp"/>
+
+    <link rel="stylesheet" href="https://dgolubets.github.io/style.css">
+    <link rel="stylesheet" href="https://dgolubets.github.io/color/blue.css">
+
+    <link rel="stylesheet" href="https://dgolubets.github.io/font-hack-subset.css">
+
+    <meta name="description" content="">
+
+    <meta property="og:description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dgolubets.github.io/leptos/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="">
+    <meta property="twitter:domain" content="dgolubets.github.io">
+    <meta property="twitter:url" content="https://dgolubets.github.io/leptos/">
+
+<style>
+    #address-parser {
+        width: 100%;
+    }
+
+    .address-parser {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            display: none;
+        }
+
+        .address-text {
+            font-family: monospace;
+            padding: 4pt;
+        }
+
+        .no-results {
+            margin-top: 16pt;
+        }
+
+        .address-details {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10pt;
+
+            .address-string {
+                white-space: pre-wrap;
+
+                span {
+                    display: inline-block;
+                }
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                padding: 2pt;
+
+                .label {
+                    width: 30%;
+                }
+
+                .value {
+                    flex-grow: 2
+                }
+            }
+
+            .address-string .selected:not(.no-match) {
+                transform: scale(1.1);
+                filter: invert(1);
+            }
+
+            .row.selected {
+                filter: invert(1);
+            }
+
+            .postcode {
+                background-color: #FF8A80;
+                /* Bright Red */
+                color: #000000;
+                /* Black */
+            }
+
+            .county {
+                background-color: #FFAB40;
+                /* Bright Orange */
+                color: #000000;
+                /* Black */
+            }
+
+            .city {
+                background-color: #82B1FF;
+                /* Bright Blue */
+                color: #000000;
+                /* Black */
+            }
+
+            .locality {
+                background-color: #69F0AE;
+                /* Bright Green */
+                color: #000000;
+                /* Black */
+            }
+
+            .dependent-locality {
+                background-color: #FF80AB;
+                /* Bright Pink */
+                color: #000000;
+                /* Black */
+            }
+
+            .street {
+                background-color: #FFFF8D;
+                /* Bright Yellow */
+                color: #000000;
+                /* Black */
+            }
+
+            .secondary-street {
+                background-color: #40C4FF;
+                /* Bright Sky Blue */
+                color: #000000;
+                /* Black */
+            }
+
+            .street-number {
+                background-color: #FF4081;
+                /* Bright Hot Pink */
+                color: #000000;
+                /* Black */
+            }
+
+            .building {
+                background-color: #BCAAA4;
+                /* Light Brown */
+                color: #000000;
+                /* Black */
+            }
+
+            .building-number {
+                background-color: #EA80FC;
+                /* Bright Purple */
+                color: #000000;
+                /* Black */
+            }
+
+            .dwelling {
+                background-color: #80DEEA;
+                /* Bright Teal */
+                color: #000000;
+                /* Black */
+            }
+
+            .dwelling-number {
+                background-color: #CCFF90;
+                /* Bright Lime Green */
+                color: #000000;
+                /* Black */
+            }
+
+            .orientation {
+                background-color: #FF7043;
+                /* Bright Coral */
+                color: #000000;
+                /* Black */
+            }
+
+            .unknown {
+                background-color: #B0BEC5;
+                /* Light Gray */
+                color: #000000;
+                /* Black */
+            }
+
+            .no-match {
+                background-color: #CFD8DC;
+                /* Very Light Gray */
+                color: #000000;
+                /* Black */
+            }
+        }
+    }
+
+    .content {
+        flex-wrap: wrap;
+    }
+</style>
+
+<link rel="modulepreload" href="/address-parser/address_parser_web-e448638357c52e60.js" crossorigin=anonymous
+    integrity="sha384-F31fB/0wK+B5F++C8ZzwDmmyONtvU1dEJ7LNw1V0282TaNsQZlqOhKi6FwvIOOOp">
+<link rel="preload" href="/address-parser/address_parser_web-e448638357c52e60_bg.wasm" crossorigin=anonymous
+    integrity="sha384-4NS6C2cwR+h3u8rzPTFl3Y++tokQV8k6GXeYw8PFrReQOhBaovyHXhkElBLgwn4x" as="fetch"
+    type="application/wasm">
+</head>
+
+<body class="">
+<div class="container">
+    
+    <header class="header">
+        <div class="header__inner">
+            <div class="header__logo">
+                    
+                <a href="https://dgolubets.github.io" style="text-decoration: none;">
+                    <div class="logo">
+                      
+                            Dmitry Golubets
+                        
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        
+        
+                <nav class="menu">
+            <ul class="menu__inner">
+                <li class="active"><a href="https://dgolubets.github.io">blog</a></li>
+            
+                <li><a href="https://dgolubets.github.io/tags">tags</a></li>
+            
+                <li><a href="https://dgolubets.github.io/archive">archive</a></li>
+            
+                <li><a href="https://dgolubets.github.io/about">about me</a></li>
+            
+                <li><a href="https://github.com/DGolubets" target="_blank" rel="noopener noreferrer">github</a></li>
+            </ul>
+        </nav>
+    
+    
+        
+    </header>
+    
+
+    <div class="content">
+        
+<div class="post-content">
+            <p>Rust was originally created to be a system programming language.
+But it turned out rather quickly there is much more potential to it.
+Nowdays it's a truly general purpose language, perfectly suitable for building various applications: REST APIs, game engines and more.</p>
+<p>Nevertheless, I was surprised to discover a frontend/fullstack web framework in Rust, a niche usually dominated by JavaScript. That framework is <a href="https://leptos.dev/">Leptos</a>.</p>
+<p>So I gave it a try.</p>
+<span id="continue-reading"></span><h2 id="prelude">Prelude</h2>
+<p>At work we analyze UK property market.
+There are different address and property databases available, but none of them is perfect.
+We have put a lot of work to combine different sources to build the most complete database.
+That involves various techniques of address strings parsing and matching to correctly combine different records.</p>
+<p>To facilitate that process I developed an utility to parse an address string into a structure.
+I chose Rust, because it has:</p>
+<ul>
+<li>great tools for string processing:
+<ul>
+<li>nice parsing combinator libraries</li>
+<li>great implementation of regex</li>
+<li>access to strings via references and slices allows to work with them in very efficient manner</li>
+</ul>
+</li>
+<li>strong static type system that gives overall confidence in complex code</li>
+</ul>
+<p>The tool worked, I was quite happy with the result and left it there.
+That was a few years ago.</p>
+<p>However there was something I wanted to build alongside the address parsing tool, but never did before recently - a UI for it.
+The moment I discovered Leptos, I thought: "That's what I'll spend next evening working on!".</p>
+<h2 id="building-address-parsing-ui">Building address parsing UI</h2>
+<p>I will describe my experience and takeaways building that UI.</p>
+<h3 id="principles">Principles</h3>
+<p>Leptos should be very easy to pick up for anyone who's familiar with React model.
+It's based on the same simple concepts:</p>
+<ul>
+<li>you have <strong>pure functions</strong> describing your components markup</li>
+<li>to keep state or run effects you use <strong>signals</strong> (similar to <strong>hooks</strong>)</li>
+</ul>
+<p>Leptos provides a convinient macros to define the markup, making components' code surprisingly easy to understand.</p>
+<p>Worth mentioning all that works on both stable and nightly! Though on nightly there is a more convinient way to use signals, whereas on stable you have to use <code>.get</code> and <code>.set</code> methods working with them.</p>
+<h3 id="code-example">Code example</h3>
+<p>Here is how I defined the root component:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>#[component]
+</span><span>pub fn App(default_address: String, example_address: String) -&gt; impl IntoView {
+</span><span>    let (text, set_text) = create_signal(default_address);
+</span><span>
+</span><span>    view! {
+</span><span>        &lt;div class=&quot;address-parser&quot;&gt;
+</span><span>            &lt;h1&gt;Address Parser&lt;/h1&gt;
+</span><span>            &lt;input
+</span><span>                class=&quot;address-text&quot;
+</span><span>                type=&quot;text&quot;
+</span><span>                placeholder=&quot;Enter an address...&quot;
+</span><span>                value=text.get()
+</span><span>                on:input=move |e| {
+</span><span>                    set_text.set(event_target_value(&amp;e));
+</span><span>                }
+</span><span>            /&gt;
+</span><span>            {move || {
+</span><span>                let text = text.get();
+</span><span>                let mut addresses = parse(&amp;text).unwrap_or_else(|_| vec![]);
+</span><span>                addresses.reverse();
+</span><span>                if addresses.is_empty() {
+</span><span>                    return vec![
+</span><span>                        view! {
+</span><span>                            &lt;div class=&quot;no-results&quot;&gt;
+</span><span>                                No results. &lt;br /&gt;Make sure the address is a valid UK address, like:
+</span><span>                                &lt;pre&gt;{&amp;example_address}&lt;/pre&gt;
+</span><span>                            &lt;/div&gt;
+</span><span>                        }
+</span><span>                            .into_view(),
+</span><span>                    ];
+</span><span>                }
+</span><span>                addresses
+</span><span>                    .iter()
+</span><span>                    .map(|address| {
+</span><span>                        view! { &lt;AddressDetails text=&amp;text address=&amp;address /&gt; }
+</span><span>                    })
+</span><span>                    .collect::&lt;Vec&lt;_&gt;&gt;()
+</span><span>            }}
+</span><span>        &lt;/div&gt;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Prettry self explanatory, isn't it?</p>
+<h3 id="web-assembly">Web assembly</h3>
+<p>Now's the cool part: Leptos compiles your code into <a href="https://webassembly.org/">web assembly</a>.</p>
+<p>For my little UI tool that means I don't even have to use any web-server, I can just run my parsing algorithm in the browser!</p>
+<h3 id="demo">Demo</h3>
+<p>Here is a live demo of the UI.
+(Using parser stub, to not leak our internal product).</p>
+
+        </div>
+
+<div id="address-parser">
+
+</div>
+<script type="module" nonce="gJ23qpN2bjOWWakmEOTpqw==">
+    import init, * as bindings from '/address-parser/address_parser_web-e448638357c52e60.js';
+    const wasm = await init('/address-parser/address_parser_web-e448638357c52e60_bg.wasm');
+
+
+    window.wasmBindings = bindings;
+
+
+    dispatchEvent(new CustomEvent("TrunkApplicationStarted", { detail: { wasm } }));
+
+</script>
+
+    </div>
+
+    
+    <footer class="footer">
+        <div class="footer__inner">
+                <div class="copyright">
+                        <span>© 
+    2024
+ Powered by <a href="https://www.getzola.org/">Zola</a></span>
+                    <span class="copyright-theme">
+                        <span class="copyright-theme-sep">:: </span>
+                        Theme: <a href="https://github.com/pawroman/zola-theme-terminimal/">Terminimal</a> by pawroman
+                    </span>
+                </div>
+            </div>
+    </footer>
+    
+
+</div>
+</body>
+
+</html>

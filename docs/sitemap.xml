@@ -14,6 +14,10 @@
         <lastmod>2024-07-14</lastmod>
     </url>
     <url>
+        <loc>https://dgolubets.github.io/leptos/</loc>
+        <lastmod>2024-10-23</lastmod>
+    </url>
+    <url>
         <loc>https://dgolubets.github.io/starting-blog/</loc>
         <lastmod>2024-07-14</lastmod>
     </url>
@@ -21,10 +25,19 @@
         <loc>https://dgolubets.github.io/tags/</loc>
     </url>
     <url>
+        <loc>https://dgolubets.github.io/tags/backend/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/tags/frontend/</loc>
+    </url>
+    <url>
         <loc>https://dgolubets.github.io/tags/general/</loc>
     </url>
     <url>
         <loc>https://dgolubets.github.io/tags/k8s/</loc>
+    </url>
+    <url>
+        <loc>https://dgolubets.github.io/tags/leptos/</loc>
     </url>
     <url>
         <loc>https://dgolubets.github.io/tags/rust/</loc>

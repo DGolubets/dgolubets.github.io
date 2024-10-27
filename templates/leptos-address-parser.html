@@ -1,0 +1,197 @@
+{% extends "page.html" %}
+
+{%- block extra_head %}
+<style>
+    #address-parser {
+        width: 100%;
+    }
+
+    .address-parser {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            display: none;
+        }
+
+        .address-text {
+            font-family: monospace;
+            padding: 4pt;
+        }
+
+        .no-results {
+            margin-top: 16pt;
+        }
+
+        .address-details {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10pt;
+
+            .address-string {
+                white-space: pre-wrap;
+
+                span {
+                    display: inline-block;
+                }
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                padding: 2pt;
+
+                .label {
+                    width: 30%;
+                }
+
+                .value {
+                    flex-grow: 2
+                }
+            }
+
+            .address-string .selected:not(.no-match) {
+                transform: scale(1.1);
+                filter: invert(1);
+            }
+
+            .row.selected {
+                filter: invert(1);
+            }
+
+            .postcode {
+                background-color: #FF8A80;
+                /* Bright Red */
+                color: #000000;
+                /* Black */
+            }
+
+            .county {
+                background-color: #FFAB40;
+                /* Bright Orange */
+                color: #000000;
+                /* Black */
+            }
+
+            .city {
+                background-color: #82B1FF;
+                /* Bright Blue */
+                color: #000000;
+                /* Black */
+            }
+
+            .locality {
+                background-color: #69F0AE;
+                /* Bright Green */
+                color: #000000;
+                /* Black */
+            }
+
+            .dependent-locality {
+                background-color: #FF80AB;
+                /* Bright Pink */
+                color: #000000;
+                /* Black */
+            }
+
+            .street {
+                background-color: #FFFF8D;
+                /* Bright Yellow */
+                color: #000000;
+                /* Black */
+            }
+
+            .secondary-street {
+                background-color: #40C4FF;
+                /* Bright Sky Blue */
+                color: #000000;
+                /* Black */
+            }
+
+            .street-number {
+                background-color: #FF4081;
+                /* Bright Hot Pink */
+                color: #000000;
+                /* Black */
+            }
+
+            .building {
+                background-color: #BCAAA4;
+                /* Light Brown */
+                color: #000000;
+                /* Black */
+            }
+
+            .building-number {
+                background-color: #EA80FC;
+                /* Bright Purple */
+                color: #000000;
+                /* Black */
+            }
+
+            .dwelling {
+                background-color: #80DEEA;
+                /* Bright Teal */
+                color: #000000;
+                /* Black */
+            }
+
+            .dwelling-number {
+                background-color: #CCFF90;
+                /* Bright Lime Green */
+                color: #000000;
+                /* Black */
+            }
+
+            .orientation {
+                background-color: #FF7043;
+                /* Bright Coral */
+                color: #000000;
+                /* Black */
+            }
+
+            .unknown {
+                background-color: #B0BEC5;
+                /* Light Gray */
+                color: #000000;
+                /* Black */
+            }
+
+            .no-match {
+                background-color: #CFD8DC;
+                /* Very Light Gray */
+                color: #000000;
+                /* Black */
+            }
+        }
+    }
+
+    .content {
+        flex-wrap: wrap;
+    }
+</style>
+
+<link rel="modulepreload" href="/address-parser/address_parser_web-e448638357c52e60.js" crossorigin=anonymous
+    integrity="sha384-F31fB/0wK+B5F++C8ZzwDmmyONtvU1dEJ7LNw1V0282TaNsQZlqOhKi6FwvIOOOp">
+<link rel="preload" href="/address-parser/address_parser_web-e448638357c52e60_bg.wasm" crossorigin=anonymous
+    integrity="sha384-4NS6C2cwR+h3u8rzPTFl3Y++tokQV8k6GXeYw8PFrReQOhBaovyHXhkElBLgwn4x" as="fetch"
+    type="application/wasm">
+{% endblock extra_head -%}
+
+{% block content %}
+{{ post_macros::content(page=page, summary=false, show_only_description=false) }}
+<div id="address-parser">
+
+</div>
+<script type="module" nonce="gJ23qpN2bjOWWakmEOTpqw==">
+    import init, * as bindings from '/address-parser/address_parser_web-e448638357c52e60.js';
+    const wasm = await init('/address-parser/address_parser_web-e448638357c52e60_bg.wasm');
+
+
+    window.wasmBindings = bindings;
+
+
+    dispatchEvent(new CustomEvent("TrunkApplicationStarted", { detail: { wasm } }));
+
+</script>
+{% endblock content %}

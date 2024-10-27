@@ -3,7 +3,7 @@ title = "Managed K8s node pool operator"
 date = 2024-07-14
 weight = 0
 [taxonomies] 
-tags = ["rust", "k8s"]
+tags = ["rust", "k8s", "backend"]
 +++
 
 [Managed K8s node pool operator](https://github.com/DGolubets/k8s-managed-node-pool) is what I've been working on lately in my spare time. Though the motivation for that comes from my job use case.
