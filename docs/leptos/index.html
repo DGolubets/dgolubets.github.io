@@ -283,40 +283,40 @@ It's based on the same simple concepts:</p>
 <p>Worth mentioning all that works on both stable and nightly! Though on nightly there is a more convinient way to use signals, whereas on stable you have to use <code>.get</code> and <code>.set</code> methods working with them.</p>
 <h3 id="code-example">Code example</h3>
 <p>Here is how I defined the root component:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>#[component]
-</span><span>pub fn App(default_address: String, example_address: String) -&gt; impl IntoView {
-</span><span>    let (text, set_text) = create_signal(default_address);
+<pre data-lang="Rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-Rust "><code class="language-Rust" data-lang="Rust"><span>#[</span><span style="color:#bf616a;">component</span><span>]
+</span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">App</span><span>(</span><span style="color:#bf616a;">default_address</span><span>: String, </span><span style="color:#bf616a;">example_address</span><span>: String) -&gt; impl IntoView {
+</span><span>    </span><span style="color:#b48ead;">let </span><span>(text, set_text) = </span><span style="color:#96b5b4;">create_signal</span><span>(default_address);
 </span><span>
 </span><span>    view! {
-</span><span>        &lt;div class=&quot;address-parser&quot;&gt;
-</span><span>            &lt;h1&gt;Address Parser&lt;/h1&gt;
+</span><span>        &lt;div class=&quot;</span><span style="color:#a3be8c;">address-parser</span><span>&quot;&gt;
+</span><span>            &lt;h1&gt;Address Parser&lt;</span><span style="background-color:#bf616a;color:#2b303b;">/</span><span>h1&gt;
 </span><span>            &lt;input
-</span><span>                class=&quot;address-text&quot;
-</span><span>                type=&quot;text&quot;
-</span><span>                placeholder=&quot;Enter an address...&quot;
-</span><span>                value=text.get()
-</span><span>                on:input=move |e| {
-</span><span>                    set_text.set(event_target_value(&amp;e));
+</span><span>                class=&quot;</span><span style="color:#a3be8c;">address-text</span><span>&quot;
+</span><span>                </span><span style="color:#b48ead;">type</span><span>=&quot;</span><span style="color:#a3be8c;">text</span><span>&quot;
+</span><span>                placeholder=&quot;</span><span style="color:#a3be8c;">Enter an address...</span><span>&quot;
+</span><span>                value=text.</span><span style="color:#96b5b4;">get</span><span>()
+</span><span>                on:input=</span><span style="color:#b48ead;">move </span><span>|e| {
+</span><span>                    set_text.</span><span style="color:#96b5b4;">set</span><span>(</span><span style="color:#96b5b4;">event_target_value</span><span>(&amp;e));
 </span><span>                }
 </span><span>            /&gt;
-</span><span>            {move || {
-</span><span>                let text = text.get();
-</span><span>                let mut addresses = parse(&amp;text).unwrap_or_else(|_| vec![]);
-</span><span>                addresses.reverse();
-</span><span>                if addresses.is_empty() {
-</span><span>                    return vec![
+</span><span>            {</span><span style="color:#b48ead;">move </span><span>|| {
+</span><span>                </span><span style="color:#b48ead;">let</span><span> text = text.</span><span style="color:#96b5b4;">get</span><span>();
+</span><span>                </span><span style="color:#b48ead;">let mut</span><span> addresses = </span><span style="color:#96b5b4;">parse</span><span>(&amp;text).</span><span style="color:#96b5b4;">unwrap_or_else</span><span>(|_| vec![]);
+</span><span>                addresses.</span><span style="color:#96b5b4;">reverse</span><span>();
+</span><span>                </span><span style="color:#b48ead;">if</span><span> addresses.</span><span style="color:#96b5b4;">is_empty</span><span>() {
+</span><span>                    </span><span style="color:#b48ead;">return </span><span>vec![
 </span><span>                        view! {
-</span><span>                            &lt;div class=&quot;no-results&quot;&gt;
-</span><span>                                No results. &lt;br /&gt;Make sure the address is a valid UK address, like:
+</span><span>                            &lt;div class=&quot;</span><span style="color:#a3be8c;">no-results</span><span>&quot;&gt;
+</span><span>                                No results. &lt;br /&gt;Make sure the address is a valid </span><span style="color:#d08770;">UK</span><span> address, like:
 </span><span>                                &lt;pre&gt;{&amp;example_address}&lt;/pre&gt;
 </span><span>                            &lt;/div&gt;
 </span><span>                        }
-</span><span>                            .into_view(),
+</span><span>                            .</span><span style="color:#96b5b4;">into_view</span><span>(),
 </span><span>                    ];
 </span><span>                }
 </span><span>                addresses
-</span><span>                    .iter()
-</span><span>                    .map(|address| {
+</span><span>                    .</span><span style="color:#96b5b4;">iter</span><span>()
+</span><span>                    .</span><span style="color:#96b5b4;">map</span><span>(|</span><span style="color:#bf616a;">address</span><span>| {
 </span><span>                        view! { &lt;AddressDetails text=&amp;text address=&amp;address /&gt; }
 </span><span>                    })
 </span><span>                    .collect::&lt;Vec&lt;_&gt;&gt;()

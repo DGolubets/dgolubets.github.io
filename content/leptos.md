@@ -55,7 +55,7 @@ Worth mentioning all that works on both stable and nightly! Though on nightly th
 
 ### Code example
 Here is how I defined the root component:
-```
+```Rust
 #[component]
 pub fn App(default_address: String, example_address: String) -> impl IntoView {
     let (text, set_text) = create_signal(default_address);
