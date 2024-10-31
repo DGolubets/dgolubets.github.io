@@ -99,7 +99,7 @@ pub fn App(default_address: String, example_address: String) -> impl IntoView {
 }
 ```
 
-Prettry self explanatory, isn't it?
+Pretty self explanatory, isn't it?
 
 ### Web assembly
 
